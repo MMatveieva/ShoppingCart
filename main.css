@@ -141,6 +141,10 @@ body {
     border-bottom-left-radius: 0;
 }
 
+.box.button.main:hover {
+    background-color: #1b78cc;
+}
+
 .amount-buttons {
     text-align: center;
 }
@@ -153,6 +157,8 @@ body {
     font-weight: 600;
     border: none;
     border-radius: .3rem;
+    transition: all .35s ease;
+    cursor: pointer;
 }
 
 /*.box.mini.button.round, .box.mini.button.delete-button {
@@ -165,7 +171,11 @@ body {
 }
 
 .box.mini.buy-button {
-    background: #D7F6FF;
+    background-color: #D7F6FF;
+}
+
+.box.mini.buy-button:hover {
+    background-color: #c1e5f8;
 }
 
 .box.round.button {
@@ -181,8 +191,16 @@ body {
     font-weight: 800;
 }
 
+.box.mini.red.button:hover {
+    background-color: #B12828;
+}
+
 .box.mini.green.button {
     background-color: #21BA45;
+}
+
+.box.mini.green.button:hover {
+    background-color: #219b38;
 }
 
 .last-buttons {
