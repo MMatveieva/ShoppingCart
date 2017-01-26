@@ -146,12 +146,11 @@ body {
 }
 
 .box.button {
-    padding: .6em 1em;
+    padding: .8em 1.1em;
     margin: 0;
     min-height: 1em;
     line-height: 1em;
     font-weight: 600;
-    cursor: inherit;
     border: none;
     border-radius: .3rem;
 }
@@ -172,10 +171,14 @@ body {
 .box.round.button {
     border-radius: 10em;
     border: 0;
+    color: white;
+    font-weight: 800;
 }
 
 .box.mini.red.button {
     background-color: #DB2828;
+    color: white;
+    font-weight: 800;
 }
 
 .box.mini.green.button {
