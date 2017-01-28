@@ -155,12 +155,8 @@ body {
     border-radius: .3rem;
     transition: all .35s ease;
     cursor: pointer;
+    position: relative;
 }
-
-/*.box.mini.button.round, .box.mini.button.delete-button {
-    margin-right: .5rem;
-    margin-left: .5rem;
-}*/
 
 .box.mini.button {
     font-size: .7rem;
@@ -278,10 +274,33 @@ h3 {
 }
 
 @media (max-width: 700px) {
-    .box.grid.columns-container{
+    .box.grid.columns-container {
         display: block;
     }
-    .box.main-container{
+
+    .box.main-container {
         padding-top: 20px;
     }
+}
+
+.button::after {
+    position: absolute;
+    bottom: 105%;
+    left: 25%;
+    background: #4343c7;
+    border-radius: 10px;
+    color: white;
+    opacity: 0;
+    padding: 10px 12px;
+    line-height: 1em;
+    font-size: .7em;
+    font-weight: 200;
+    visibility: hidden;
+    transition: all .5s ease;
+    content: attr(data-tooltip);
+}
+
+.button:hover::after {
+    opacity: 1;
+    visibility: visible;
 }
