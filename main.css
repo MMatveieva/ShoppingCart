@@ -227,13 +227,45 @@ h3 {
 }
 
 .box.label.made-by {
-    width: 50px;
-    height: 100px;
-    background-color: blueviolet;
+    width: auto;
+    height: auto;
+    background-color: #318de2;
     color: white;
     position: fixed;
     left: 3rem;
-    bottom: 0px;
+    bottom: -47px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    padding: 5px;
+    padding-bottom: 7px;
+    transition: all 1s ease;
+}
+
+.box.label.made-by:hover{
+    bottom: -2px;
+    background-color: #4343c7;
+}
+
+.signature {
+    display: block;
+    font-size: .9em;
+}
+
+.signature:first-child {
+    padding: 10px 3px;
+    padding-top: 7px;
+    padding-bottom: 18px;
+    text-align: center;
+    font-weight: 900;
+    font-size: 1.5em;
+}
+
+.signature:last-child {
+    padding-top: 3px;
+    font-size: 1.1em;
+    font-weight: 200;
+}
+
+@media (max-width: 500px) {
+
 }
