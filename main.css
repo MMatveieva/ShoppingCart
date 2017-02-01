@@ -1,5 +1,6 @@
 body {
     background: #D7F6FF;
+    opacity: 0.9;
     font-family: SansSerif;
     line-height: 1.4em;
 }
@@ -140,6 +141,10 @@ body {
     background-color: #1b78cc;
 }
 
+.box.button.main:active {
+    background-color: #1b5eae;
+}
+
 .amount-buttons {
     text-align: center;
 }
@@ -155,6 +160,7 @@ body {
     transition: all .35s ease;
     cursor: pointer;
     position: relative;
+    outline: none;
 }
 
 .box.mini.button {
@@ -169,6 +175,10 @@ body {
     background-color: #c1e5f8;
 }
 
+.box.mini.buy-button:active {
+    background-color: #aed2e5;
+}
+
 .box.round.button {
     border-radius: 10em;
     border: 0;
@@ -177,25 +187,33 @@ body {
 }
 
 .box.mini.red.button {
-    background-color: #DB2828;
+    background-color: #e12828;
     color: white;
     font-weight: 800;
 }
 
 .box.mini.red.button:hover {
-    background-color: #B12828;
+    background-color: #cd2828;
+}
+
+.box.mini.red.button:active {
+    background-color: #b12828;
 }
 
 .box.mini.green.button {
-    background-color: #21BA45;
+    background-color: #25c343;
 }
 
 .box.mini.green.button:hover {
-    background-color: #219b38;
+    background-color: #25b143;
+}
+
+.box.mini.green.button:active {
+    background-color: #22993a;
 }
 
 .box.mini.red.button.disabled {
-    opacity: 0.3;
+    opacity: 0.45;
 }
 
 .box.mini.red.button.disabled:hover {
@@ -278,6 +296,30 @@ h3 {
     font-weight: 200;
 }
 
+.button::after {
+    position: absolute;
+    bottom: 106%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: #4343c7;
+    opacity: 0.9;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 12px;
+    line-height: 10px;
+    font-size: 10px;
+    font-weight: 200;
+    display: none;
+    transition: all .5s ease;
+    content: attr(data-tooltip);
+    width: 30px;
+}
+
+.button:hover::after {
+    display: inline-block;
+}
+
 @media print {
     .box.label.made-by {
         background-color: white;
@@ -319,27 +361,4 @@ h3 {
     .box.main-container {
         padding-top: 20px;
     }
-}
-
-.button::after {
-    position: absolute;
-    bottom: 106%;
-    left: 0;
-    right: 0;
-    margin: auto;
-    background: #4343c7;
-    border-radius: 10px;
-    color: white;
-    padding: 10px 12px;
-    line-height: 10px;
-    font-size: 10px;
-    font-weight: 200;
-    display: none;
-    transition: all .5s ease;
-    content: attr(data-tooltip);
-    width: 30px;
-}
-
-.button:hover::after {
-    display: inline-block;
 }
