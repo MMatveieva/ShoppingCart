@@ -1,7 +1,6 @@
 body {
     background: #D7F6FF;
     font-family: SansSerif;
-/ / font-size: 14 px;
     line-height: 1.4em;
 }
 
@@ -17,19 +16,18 @@ body {
 
 .box.grid {
     margin: -1rem;
-    display: flex;
     padding: 0;
 }
 
 .box.grid > [class*="name"].column {
     width: 25%;
+    box-sizing: border-box;
 }
 
 .column.complex {
-    width: 37.5%;
-    display: flex;
-    flex: auto;
-
+    width: 35%;
+    box-sizing: border-box;
+    display: inline-block;
 }
 
 .box.label {
@@ -87,6 +85,7 @@ body {
 .box.segments {
     border: solid 1px #c4e3ec;
     background-color: white;
+    /* min-width: 500 px;*/
 }
 
 .box.segments > .segment {
@@ -110,7 +109,7 @@ body {
 .box.add input {
     margin: 0;
     flex: auto;
-/ / max-width: 100 %;
+    /* max-width: 100 %;*/
     width: 60%;
     padding-left: .8em;
 }
@@ -195,6 +194,19 @@ body {
     background-color: #219b38;
 }
 
+.box.mini.red.button.disabled {
+    opacity: 0.3;
+}
+
+.box.mini.red.button.disabled:hover {
+    background-color: #DB2828;
+    cursor: not-allowed;
+}
+
+.box.mini.red.button.disabled:hover::after {
+    display: none !important;
+}
+
 .last-buttons {
     text-align: right !important;
     padding-top: .5rem;
@@ -202,13 +214,19 @@ body {
 }
 
 .column.one {
-    width: 70%;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 65%;
     padding: 1rem;
+    float: left;
 }
 
 .column.two {
+    box-sizing: border-box;
+    display: inline-block;
     width: 35%;
     padding: 1rem;
+    float: right;
 }
 
 .box.grid > * {
@@ -273,9 +291,17 @@ h3 {
 
 }
 
-@media (max-width: 700px) {
-    .box.grid.columns-container {
-        display: block;
+@media (max-width: 720px) {
+    .column.one {
+        float: none;
+        width: 100%;
+        min-width: 470px;
+    }
+
+    .column.two {
+        float: none;
+        width: 100%;
+        min-width: 470px;
     }
 
     .box.main-container {
@@ -285,22 +311,23 @@ h3 {
 
 .button::after {
     position: absolute;
-    bottom: 105%;
-    left: 25%;
+    bottom: 106%;
+    left: 0;
+    right: 0;
+    margin: auto;
     background: #4343c7;
     border-radius: 10px;
     color: white;
-    opacity: 0;
     padding: 10px 12px;
-    line-height: 1em;
-    font-size: .7em;
+    line-height: 10px;
+    font-size: 10px;
     font-weight: 200;
-    visibility: hidden;
+    display: none;
     transition: all .5s ease;
     content: attr(data-tooltip);
+    width: 30px;
 }
 
 .button:hover::after {
-    opacity: 1;
-    visibility: visible;
+    display: inline-block;
 }
