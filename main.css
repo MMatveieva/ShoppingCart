@@ -79,13 +79,13 @@ body {
 }
 
 .box.items {
-    padding-bottom: 0.5rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
 }
 
 .box.segments {
     border: solid 1px #c4e3ec;
     background-color: white;
-    /* min-width: 500 px;*/
 }
 
 .box.segments > .segment {
@@ -282,11 +282,23 @@ h3 {
     .box.label.made-by {
         background-color: white;
         color: black;
-        border: 1px solid;
-        border-color: #4343c7;
+        border: 1px solid black;
         position: fixed;
         left: 3rem;
         bottom: -2px;
+    }
+
+    .box.segments > .segment {
+        border-color: black;
+    }
+
+    .box.segments, .box.button, .box.button.main, .box.round.button, .box.label {
+        border: 1px solid black;
+        color: black;
+    }
+
+    .button::after {
+        display: none;
     }
 
 }
