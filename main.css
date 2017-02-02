@@ -1,6 +1,6 @@
 body {
     background: #D7F6FF;
-    opacity: 0.9;
+    opacity: 0.8;
     font-family: SansSerif;
     line-height: 1.4em;
 }
@@ -11,8 +11,8 @@ body {
 
 .box.main-container {
     padding-top: 100px;
-    margin-right: 2rem;
-    margin-left: 2rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
 }
 
 .box.grid {
@@ -319,6 +319,16 @@ h3 {
 .button:hover::after {
     display: inline-block;
 }
+
+.hidden{
+    display: none;
+}
+
+
+
+
+
+
 
 @media print {
     .box.label.made-by {
