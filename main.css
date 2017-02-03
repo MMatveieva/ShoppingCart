@@ -73,7 +73,7 @@ body {
     background: white;
 }
 
-.state.not-bought {
+.state.not-bought, .state.already-bought {
     width: 100%;
     height: 100%;
     padding: 0;
@@ -166,15 +166,15 @@ body {
     font-size: .7rem;
 }
 
-.box.mini.buy-button {
+.box.mini.buy-button, .box.mini.unbuy-button {
     background-color: #D7F6FF;
 }
 
-.box.mini.buy-button:hover {
+.box.mini.buy-button:hover, .box.mini.unbuy-button:hover {
     background-color: #c1e5f8;
 }
 
-.box.mini.buy-button:active {
+.box.mini.buy-button:active, .box.mini.unbuy-button:active {
     background-color: #aed2e5;
 }
 
@@ -320,7 +320,11 @@ h3 {
     transform: scale(1, 1);
 }
 
-.hidden {
+.state.already-bought {
+    text-decoration: line-through;
+}
+
+.name-edit, .already-bought, .button.unbuy-button {
     display: none;
 }
 
