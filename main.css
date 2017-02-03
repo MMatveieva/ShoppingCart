@@ -110,7 +110,6 @@ body {
 .box.add input {
     margin: 0;
     flex: auto;
-    /* max-width: 100 %;*/
     width: 60%;
     padding-left: .8em;
 }
@@ -313,21 +312,17 @@ h3 {
     transition: all .2s ease-in-out;
     content: attr(data-tooltip);
     width: 30px;
-    transform: scale(0,0);
+    transform: scale(0, 0);
 }
 
 .button:hover::after {
     display: inline-block;
-    transform: scale(1,1);
+    transform: scale(1, 1);
 }
 
-.hidden{
+.hidden {
     display: none;
 }
-
-
-
-
 
 @media print {
     .box.label.made-by {
@@ -339,7 +334,7 @@ h3 {
         bottom: -2px;
     }
 
-    .signature.buy-list{
+    .signature.buy-list {
         display: none;
     }
 
@@ -347,13 +342,18 @@ h3 {
         border-color: black;
     }
 
-    .box.segments, .box.button, .box.button.main, .box.round.button, .box.label, .box.round.label, .box.segment.add.input {
+    .box.segments, .box.button, .box.button.main, .box.round.button, .box.label, .box.round.label, .box.mini.red.button {
         border: 1px solid black;
         color: black;
     }
 
     .box.button::after {
         display: none;
+    }
+
+    .box.main-container {
+        width: 99%;
+        box-sizing: border-box;
     }
 
 }
