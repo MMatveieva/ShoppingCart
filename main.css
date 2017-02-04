@@ -40,6 +40,10 @@ body {
     line-height: 1;
 }
 
+.box.bought > .label {
+    text-decoration: line-through;
+}
+
 .box.mini.label {
     font-size: .7rem;
 }

@@ -47,6 +47,8 @@ $(function () {
         var $minusButton = $node.find(".minus-button");
         $minusButton.click(function () {
             console.log("Quantity", quantity);
+            if (quantity == 1)
+                $minusButton.addClass("disabled");
             if (quantity > 1) {
                 quantity--;
                 $quantityLabel.text(quantity);
@@ -79,15 +81,47 @@ $(function () {
             $node.find(".unbuy-button").css({
                 display: "inline-block"
             });
-            $node.find(".amount-buttons").css({
-                visibility: "hidden"
+            $node.find(".minus-button").css({
+                display: "none"
             });
-
+            $node.find(".plus-button").css({
+                display: "none"
+            });
+            $BOUGHT.append($status);
         });
+
+        var $rename = $node.find(".not-bought");
+        var $nameEdit = $node.find(".name-edit");
+        $rename.click(function () {
+            $rename.css({
+                display: "none"
+            });
+            $nameEdit.css("display", "inline-block");
+            $nameEdit.val(title);
+            $nameEdit.focus();
+            newName = $nameEdit.val();
+        });
+
+        var display = $nameEdit.css("display");
+        if (display == "inline-block") {
+            $node.find(".inhalt").focusout(function () {
+                var newName = $nameEdit.val();
+                console.log("New name", newName);
+                $nameEdit.css("display", "none");
+                $rename.css("display", "inline-block");
+                $rename.text(newName);
+            });
+        }
 
         $NOT_BOUGHT.append($status);
         $LIST.append($node); //Add to the end of the list
+
+
     }
+
+    addItem("Помідори");
+    addItem("Печиво");
+    addItem("Сир");
 
     function addNewItem() {
         var item_name = $input.val();
@@ -99,7 +133,7 @@ $(function () {
         $input.focus();
     }
 
-    //When you click on button "ADD", new item appears on the list
+//When you click on button "ADD", new item appears on the list
     $addButton.click(addNewItem);
 
 
@@ -113,4 +147,5 @@ $(function () {
         });
     }
 
-});
+})
+;
