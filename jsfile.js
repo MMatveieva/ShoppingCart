@@ -13,33 +13,43 @@ $(function () {
 
     //variables from column two
     var $NOT_BOUGHT = $('.elements-not-bought');
+    var $STATUS_TEMPLATE = $('.bought-items-template').html();
     var $BOUGHT = $('.bought');
 
-    // console.log("Template:" + $ITEM_TEMPLATE);
+    console.log("Template:" + $ITEM_TEMPLATE);
     console.log("add-button:", $addButton);
     console.log("input:", $input);
 
     function addItem(title) {
         var $node = $($ITEM_TEMPLATE);
         var quantity = 1;
-        var $quantity_label = $node.find(".count");
-        $quantity_label.text(quantity);
+        var $quantityLabel = $node.find(".count");
 
-        $node.find(".name").text(title);
-        console.log("Name", $node.find(".name").text(title));
+        var $status = $($STATUS_TEMPLATE);
+
+        $node.find(".not-bought").text(title);
+        $node.find(".already-bought").text(title);
+        $quantityLabel.text(quantity);
+        console.log("Name", $node.find(".not-bought").text(title));
         console.log("Quantity-label", quantity);
+
+        $status.find(".title").text(title);
+        $status.find(".left-count").text(quantity);
 
         $node.find(".delete-button").click(function () {
             $node.remove();
+            $(".left").each(function (i, item) {
+                var item = $(item); //to have access to all jQuery functions
+                console.log(item.find('.title').text());
+            });
         });
 
-        var $minusButton = $(".minus-button");
-        $node.find($minusButton).click(function () {
+        var $minusButton = $node.find(".minus-button");
+        $minusButton.click(function () {
             console.log("Quantity", quantity);
             if (quantity > 1) {
-
                 quantity--;
-                $quantity_label.text(quantity);
+                $quantityLabel.text(quantity);
             }
 
         });
@@ -48,9 +58,34 @@ $(function () {
             quantity++;
             if (quantity > 1)
                 $minusButton.removeClass("disabled");
-            $quantity_label.text(quantity);
+            $quantityLabel.text(quantity);
         });
 
+        var $buyButton = $node.find(".buy-button");
+        $buyButton.click(function () {
+            $node.find(".not-bought").css({
+                display: "none"
+            });
+            console.log($node.find(".not-bought"));
+            $node.find(".already-bought").css({
+                display: "inline-block"
+            });
+            $node.find(".buy-button").css({
+                display: "none"
+            });
+            $node.find(".delete-button").css({
+                display: "none"
+            });
+            $node.find(".unbuy-button").css({
+                display: "inline-block"
+            });
+            $node.find(".amount-buttons").css({
+                visibility: "hidden"
+            });
+
+        });
+
+        $NOT_BOUGHT.append($status);
         $LIST.append($node); //Add to the end of the list
     }
 
