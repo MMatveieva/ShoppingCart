@@ -28,9 +28,12 @@ $(function () {
         var $status = $($STATUS_TEMPLATE);
         var $alreadyBought = $node.find(".already-bought");
         var $notBought = $node.find(".not-bought");
+        var $unbuyButton = $node.find(".unbuy-button");
+        var $buyButton = $node.find(".buy-button");
+        var $deleteButton = $node.find(".delete-button");
 
         // "DELETE-BUTTON"
-        $node.find(".delete-button").click(function () {
+        $deleteButton.click(function () {
             $node.remove();
             $status.remove();
         });
@@ -59,19 +62,18 @@ $(function () {
         });
 
         // "BUY-BUTTON"
-        var $buyButton = $node.find(".buy-button");
         $buyButton.click(function () {
             $notBought.css("display", "none");
             $alreadyBought.css({
                 display: "inline-block"
             });
-            $node.find(".buy-button").css({
+            $buyButton.css({
                 display: "none"
             });
-            $node.find(".delete-button").css({
+            $deleteButton.css({
                 display: "none"
             });
-            $node.find(".unbuy-button").css({
+            $unbuyButton.css({
                 display: "inline-block"
             });
             $node.find(".minus-button").css({
@@ -80,11 +82,11 @@ $(function () {
             $node.find(".plus-button").css({
                 display: "none"
             });
+            $alreadyBought.text(title);
             $BOUGHT.append($status);
         });
 
         // "UNBUY-BUTTON"
-        var $unbuyButton = $node.find(".unbuy-button");
         $unbuyButton.click(function () {
             $alreadyBought.css({
                 display: "none"
@@ -92,13 +94,13 @@ $(function () {
             $notBought.css({
                 display: "inline-block"
             });
-            $node.find(".buy-button").css({
+            $buyButton.css({
                 display: "inline-block"
             });
-            $node.find(".delete-button").css({
+            $deleteButton.css({
                 display: "inline-block"
             });
-            $node.find(".unbuy-button").css({
+            $unbuyButton.css({
                 display: "none"
             });
             $node.find(".minus-button").css({
@@ -129,7 +131,7 @@ $(function () {
             $nameEdit.css("display", "none");
             $notBought.css("display", "inline-block");
             $notBought.text(updatedName);
-            $alreadyBought.val(updatedName);
+            title = updatedName;
             $status.find(".title").text(updatedName);
             $nameEdit.val(updatedName);
         }
@@ -145,7 +147,7 @@ $(function () {
         // $node.find(".inhalt").focusout(newName);
 
         $notBought.text(title);
-        $alreadyBought.text(title);
+
         $quantityLabel.text(quantity);
         console.log("Name", $notBought.text(title));
         console.log("Quantity-label", quantity);
