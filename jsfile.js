@@ -27,31 +27,23 @@ $(function () {
 
         var $status = $($STATUS_TEMPLATE);
 
-        $node.find(".not-bought").text(title);
-        $node.find(".already-bought").text(title);
-        $quantityLabel.text(quantity);
-        console.log("Name", $node.find(".not-bought").text(title));
-        console.log("Quantity-label", quantity);
 
-        $status.find(".title").text(title);
-        $status.find(".left-count").text(quantity);
 
+        // "DELETE-BUTTON"
         $node.find(".delete-button").click(function () {
             $node.remove();
-            $(".left").each(function (i, item) {
-                var item = $(item); //to have access to all jQuery functions
-                console.log(item.find('.title').text());
-            });
+            $status.remove();
         });
 
         var $minusButton = $node.find(".minus-button");
         $minusButton.click(function () {
             console.log("Quantity", quantity);
-            if (quantity == 1)
+            if (quantity == 2)
                 $minusButton.addClass("disabled");
             if (quantity > 1) {
                 quantity--;
                 $quantityLabel.text(quantity);
+                $status.find(".left-count").text(quantity);
             }
 
         });
@@ -61,14 +53,12 @@ $(function () {
             if (quantity > 1)
                 $minusButton.removeClass("disabled");
             $quantityLabel.text(quantity);
+            $status.find(".left-count").text(quantity);
         });
 
         var $buyButton = $node.find(".buy-button");
         $buyButton.click(function () {
-            $node.find(".not-bought").css({
-                display: "none"
-            });
-            console.log($node.find(".not-bought"));
+            $node.find(".not-bought").css("display", "none");
             $node.find(".already-bought").css({
                 display: "inline-block"
             });
@@ -92,12 +82,11 @@ $(function () {
 
         var $unbuyButton = $node.find(".unbuy-button");
         $unbuyButton.click(function () {
-            $node.find(".not-bought").css({
-                display: "inline-block"
-            });
-            console.log($node.find(".not-bought"));
             $node.find(".already-bought").css({
                 display: "none"
+            });
+            $node.find(".not-bought").css({
+                display: "inline-block"
             });
             $node.find(".buy-button").css({
                 display: "inline-block"
@@ -114,6 +103,7 @@ $(function () {
             $node.find(".plus-button").css({
                 display: "inline-block"
             });
+            $BOUGHT.remove($status);
             $NOT_BOUGHT.append($status);
         });
 
@@ -129,20 +119,39 @@ $(function () {
             // newName = $nameEdit.val();
         });
 
-        var display = $nameEdit.css("display");
-        if (display == "inline-block") {
-            $node.find(".inhalt").focusout(function () {
-                var newName = $nameEdit.val();
-                console.log("New name", newName);
-                $nameEdit.css("display", "none");
-                $rename.css("display", "inline-block");
-                $rename.text(newName);
-            });
+        function newName() {
+            var newName = $nameEdit.val();
+            console.log("New name", newName);
+            $nameEdit.css("display", "none");
+            $rename.css("display", "inline-block");
+            $rename.text(newName);
+            title = newName;
+            $status.find(".title").text(newName);
+            $nameEdit.val(newName);
         }
+
+        $nameEdit.keypress(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                console.log("Enter was pressed");
+                newName();
+            }
+        });
+
+       // $node.find(".inhalt").focusout(newName);
+
+        $node.find(".not-bought").text(title);
+        $node.find(".already-bought").text(title);
+        $quantityLabel.text(quantity);
+        console.log("Name", $node.find(".not-bought").text(title));
+        console.log("Quantity-label", quantity);
+
+        $status.find(".title").text(title);
+        $status.find(".left-count").text(quantity);
 
         $NOT_BOUGHT.append($status);
         $LIST.append($node); //Add to the end of the list
-        
+
     }
 
     addItem("Помідори");
