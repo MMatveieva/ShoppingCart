@@ -324,7 +324,7 @@ h3 {
     transform: scale(1, 1);
 }
 
-.state::after {
+.state.not-bought::after {
     position: absolute;
     bottom: 106%;
     left: 0;
@@ -344,7 +344,7 @@ h3 {
     transform: scale(0, 0);
 }
 
-.state:hover::after {
+.state.not-bought:hover::after {
     display: inline-block;
     transform: scale(1, 1);
 }

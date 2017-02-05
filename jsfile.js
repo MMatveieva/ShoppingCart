@@ -28,7 +28,6 @@ $(function () {
         var $status = $($STATUS_TEMPLATE);
 
 
-
         // "DELETE-BUTTON"
         $node.find(".delete-button").click(function () {
             $node.remove();
@@ -120,14 +119,14 @@ $(function () {
         });
 
         function newName() {
-            var newName = $nameEdit.val();
-            console.log("New name", newName);
+            var updatedName = $nameEdit.val();
+            console.log("New name", updatedName);
             $nameEdit.css("display", "none");
             $rename.css("display", "inline-block");
-            $rename.text(newName);
-            title = newName;
-            $status.find(".title").text(newName);
-            $nameEdit.val(newName);
+            $rename.text(updatedName);
+            $node.find(".already-bought").val(updatedName);
+            $status.find(".title").text(updatedName);
+            $nameEdit.val(updatedName);
         }
 
         $nameEdit.keypress(function (event) {
@@ -138,7 +137,7 @@ $(function () {
             }
         });
 
-       // $node.find(".inhalt").focusout(newName);
+        // $node.find(".inhalt").focusout(newName);
 
         $node.find(".not-bought").text(title);
         $node.find(".already-bought").text(title);
