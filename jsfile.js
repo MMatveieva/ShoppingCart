@@ -26,7 +26,8 @@ $(function () {
         var $quantityLabel = $node.find(".count");
 
         var $status = $($STATUS_TEMPLATE);
-
+        var $alreadyBought = $node.find(".already-bought");
+        var $notBought = $node.find(".not-bought");
 
         // "DELETE-BUTTON"
         $node.find(".delete-button").click(function () {
@@ -60,8 +61,8 @@ $(function () {
         // "BUY-BUTTON"
         var $buyButton = $node.find(".buy-button");
         $buyButton.click(function () {
-            $node.find(".not-bought").css("display", "none");
-            $node.find(".already-bought").css({
+            $notBought.css("display", "none");
+            $alreadyBought.css({
                 display: "inline-block"
             });
             $node.find(".buy-button").css({
@@ -85,10 +86,10 @@ $(function () {
         // "UNBUY-BUTTON"
         var $unbuyButton = $node.find(".unbuy-button");
         $unbuyButton.click(function () {
-            $node.find(".already-bought").css({
+            $alreadyBought.css({
                 display: "none"
             });
-            $node.find(".not-bought").css({
+            $notBought.css({
                 display: "inline-block"
             });
             $node.find(".buy-button").css({
@@ -111,10 +112,9 @@ $(function () {
         });
 
         // "NAME-EDIT"
-        var $rename = $node.find(".not-bought");
         var $nameEdit = $node.find(".name-edit");
-        $rename.click(function () {
-            $rename.css({
+        $notBought.click(function () {
+            $notBought.css({
                 display: "none"
             });
             $nameEdit.css("display", "inline-block");
@@ -127,9 +127,9 @@ $(function () {
             var updatedName = $nameEdit.val();
             console.log("New name", updatedName);
             $nameEdit.css("display", "none");
-            $rename.css("display", "inline-block");
-            $rename.text(updatedName);
-            $node.find(".already-bought").val(updatedName);
+            $notBought.css("display", "inline-block");
+            $notBought.text(updatedName);
+            $alreadyBought.val(updatedName);
             $status.find(".title").text(updatedName);
             $nameEdit.val(updatedName);
         }
@@ -144,10 +144,10 @@ $(function () {
 
         // $node.find(".inhalt").focusout(newName);
 
-        $node.find(".not-bought").text(title);
-        $node.find(".already-bought").text(title);
+        $notBought.text(title);
+        $alreadyBought.text(title);
         $quantityLabel.text(quantity);
-        console.log("Name", $node.find(".not-bought").text(title));
+        console.log("Name", $notBought.text(title));
         console.log("Quantity-label", quantity);
 
         $status.find(".title").text(title);
