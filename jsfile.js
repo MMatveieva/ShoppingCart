@@ -14,7 +14,7 @@ $(function () {
     //variables from column two
     var $NOT_BOUGHT = $('.elements-not-bought');
     var $STATUS_TEMPLATE = $('.bought-items-template').html();
-    var $BOUGHT = $('.bought');
+    var $BOUGHT = $('.bought-items');
 
     console.log("Template:" + $ITEM_TEMPLATE);
     console.log("add-button:", $addButton);
@@ -34,6 +34,7 @@ $(function () {
             $status.remove();
         });
 
+        // "MINUS-BUTTON"
         var $minusButton = $node.find(".minus-button");
         $minusButton.click(function () {
             console.log("Quantity", quantity);
@@ -47,6 +48,7 @@ $(function () {
 
         });
 
+        // "PLUS-BUTTON"
         $node.find(".plus-button").click(function () {
             quantity++;
             if (quantity > 1)
@@ -55,6 +57,7 @@ $(function () {
             $status.find(".left-count").text(quantity);
         });
 
+        // "BUY-BUTTON"
         var $buyButton = $node.find(".buy-button");
         $buyButton.click(function () {
             $node.find(".not-bought").css("display", "none");
@@ -79,6 +82,7 @@ $(function () {
             $BOUGHT.append($status);
         });
 
+        // "UNBUY-BUTTON"
         var $unbuyButton = $node.find(".unbuy-button");
         $unbuyButton.click(function () {
             $node.find(".already-bought").css({
@@ -102,10 +106,11 @@ $(function () {
             $node.find(".plus-button").css({
                 display: "inline-block"
             });
-            $BOUGHT.remove($status);
+            $status.remove();
             $NOT_BOUGHT.append($status);
         });
 
+        // "NAME-EDIT"
         var $rename = $node.find(".not-bought");
         var $nameEdit = $node.find(".name-edit");
         $rename.click(function () {

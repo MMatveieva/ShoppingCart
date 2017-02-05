@@ -40,7 +40,7 @@ body {
     line-height: 1;
 }
 
-.box.bought > .label {
+.box.bought-items > .label {
     text-decoration: line-through;
 }
 
