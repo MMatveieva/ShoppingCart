@@ -90,6 +90,33 @@ $(function () {
             $BOUGHT.append($status);
         });
 
+        var $unbuyButton = $node.find(".unbuy-button");
+        $unbuyButton.click(function () {
+            $node.find(".not-bought").css({
+                display: "inline-block"
+            });
+            console.log($node.find(".not-bought"));
+            $node.find(".already-bought").css({
+                display: "none"
+            });
+            $node.find(".buy-button").css({
+                display: "inline-block"
+            });
+            $node.find(".delete-button").css({
+                display: "inline-block"
+            });
+            $node.find(".unbuy-button").css({
+                display: "none"
+            });
+            $node.find(".minus-button").css({
+                display: "inline-block"
+            });
+            $node.find(".plus-button").css({
+                display: "inline-block"
+            });
+            $NOT_BOUGHT.append($status);
+        });
+
         var $rename = $node.find(".not-bought");
         var $nameEdit = $node.find(".name-edit");
         $rename.click(function () {
@@ -99,7 +126,7 @@ $(function () {
             $nameEdit.css("display", "inline-block");
             $nameEdit.val(title);
             $nameEdit.focus();
-            newName = $nameEdit.val();
+            // newName = $nameEdit.val();
         });
 
         var display = $nameEdit.css("display");
@@ -115,8 +142,7 @@ $(function () {
 
         $NOT_BOUGHT.append($status);
         $LIST.append($node); //Add to the end of the list
-
-
+        
     }
 
     addItem("Помідори");
@@ -133,9 +159,17 @@ $(function () {
         $input.focus();
     }
 
-//When you click on button "ADD", new item appears on the list
-    $addButton.click(addNewItem);
+    //When you click "ENTER", new item appears on the list
+    $input.keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+            console.log("Enter was pressed");
+            addNewItem();
+        }
+    });
 
+    //When you click on button "ADD", new item appears on the list
+    $addButton.click(addNewItem);
 
     $input.attr("placeholder", "Назву товару");
 
@@ -147,5 +181,4 @@ $(function () {
         });
     }
 
-})
-;
+});

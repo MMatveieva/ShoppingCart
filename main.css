@@ -332,6 +332,10 @@ h3 {
     display: none;
 }
 
+.hidden{
+    display: none;
+}
+
 @media print {
     .box.label.made-by {
         background-color: white;
