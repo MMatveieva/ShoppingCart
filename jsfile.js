@@ -186,7 +186,7 @@ $(function () {
     //When you click on button "ADD", new item appears on the list
     $addButton.click(addNewItem);
 
-    $input.attr("placeholder", "Назву товару");
+    $input.attr("placeholder", "Назва товару");
 
 
     function updateNode(node, fn) {
