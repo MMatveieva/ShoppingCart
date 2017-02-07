@@ -78,6 +78,7 @@ body {
 }
 
 .state.not-bought, .state.already-bought {
+    display: inline-block;
     width: 100%;
     height: 100%;
     padding: 0;
@@ -172,6 +173,7 @@ body {
 
 .box.mini.buy-button, .box.mini.unbuy-button {
     background-color: #D7F6FF;
+    display: inline-block;
 }
 
 .box.mini.buy-button:hover, .box.mini.unbuy-button:hover {
@@ -368,6 +370,11 @@ h3 {
 .name-edit {
     box-sizing: border-box;
     width: 100%;
+    display: inline-block;
+}
+
+.hidden{
+    display: none!important;
 }
 
 @media print {

@@ -66,52 +66,40 @@ $(function () {
 
         // "BUY-BUTTON"
         $buyButton.click(function () {
-            $notBought.css("display", "none");
-            $alreadyBought.css({
-                display: "inline-block"
-            });
-            $buyButton.css({
-                display: "none"
-            });
-            $deleteButton.css({
-                display: "none"
-            });
-            $unbuyButton.css({
-                display: "inline-block"
-            });
-            $minusButton.css({
-                display: "none"
-            });
-            $plusButton.css({
-                display: "none"
-            });
+            $notBought.addClass("hidden");
+            //$notBought.css("display", "none");
+            $alreadyBought.removeClass("hidden");
+            //$alreadyBought.css("display", "inline-block");
+            $buyButton.addClass("hidden");
+            //$buyButton.css("display", "none");
+            $deleteButton.addClass("hidden");
+            //$deleteButton.css("display", "none");
+            $unbuyButton.removeClass("hidden");
+            //$unbuyButton.css("display", "inline-block");
+            $minusButton.addClass("hidden");
+            //$minusButton.css("display", "none");
+            $plusButton.addClass("hidden");
+            //$plusButton.css("display", "none");
             $alreadyBought.text(title);
             $BOUGHT.append($status);
         });
 
         // "UNBUY-BUTTON"
         $unbuyButton.click(function () {
-            $alreadyBought.css({
-                display: "none"
-            });
-            $notBought.css({
-                display: "inline-block"
-            });
-            $buyButton.css({
-                display: "inline-block"
-            });
-            $deleteButton.css({
-                display: "inline-block"
-            });
-            $unbuyButton.css({
-                display: "none"
-            });
-            $minusButton.css({
-                display: "inline-block"
-            });
-            $plusButton.css({
-                display: "inline-block"
-            });
+            $alreadyBought.addClass("hidden");
+            //$alreadyBought.css("display", "none");
+            $notBought.removeClass("hidden");
+            //$notBought.css("display", "inline-block");
+            $buyButton.removeClass("hidden");
+            //$buyButton.css("display", "inline-block");
+            $deleteButton.removeClass("hidden");
+            //$deleteButton.css("display", "inline-block");
+            $unbuyButton.addClass("hidden");
+            //$unbuyButton.css("display", "none");
+            $minusButton.removeClass("hidden");
+            //$minusButton.css("display", "inline-block");
+            $plusButton.removeClass("hidden");
+            $plusButton.css("display", "inline-block");
             $status.remove();
             $NOT_BOUGHT.append($status);
         });
@@ -119,10 +107,10 @@ $(function () {
         // "NAME-EDIT"
         var $nameEdit = $node.find(".name-edit");
         $notBought.click(function () {
-            $notBought.css({
-                display: "none"
-            });
-            $nameEdit.css("display", "inline-block");
+            $notBought.addClass("hidden");
+            //$notBought.css("display", "none");
+            $nameEdit.removeClass("hidden");
+            //$nameEdit.css("display", "inline-block");
             $nameEdit.val(title);
             $nameEdit.focus();
             // newName = $nameEdit.val();
