@@ -67,19 +67,12 @@ $(function () {
         // "BUY-BUTTON"
         $buyButton.click(function () {
             $notBought.addClass("hidden");
-            //$notBought.css("display", "none");
             $alreadyBought.removeClass("hidden");
-            //$alreadyBought.css("display", "inline-block");
             $buyButton.addClass("hidden");
-            //$buyButton.css("display", "none");
             $deleteButton.addClass("hidden");
-            //$deleteButton.css("display", "none");
             $unbuyButton.removeClass("hidden");
-            //$unbuyButton.css("display", "inline-block");
             $minusButton.addClass("hidden");
-            //$minusButton.css("display", "none");
             $plusButton.addClass("hidden");
-            //$plusButton.css("display", "none");
             $alreadyBought.text(title);
             $BOUGHT.append($status);
         });
@@ -87,17 +80,11 @@ $(function () {
         // "UNBUY-BUTTON"
         $unbuyButton.click(function () {
             $alreadyBought.addClass("hidden");
-            //$alreadyBought.css("display", "none");
             $notBought.removeClass("hidden");
-            //$notBought.css("display", "inline-block");
             $buyButton.removeClass("hidden");
-            //$buyButton.css("display", "inline-block");
             $deleteButton.removeClass("hidden");
-            //$deleteButton.css("display", "inline-block");
             $unbuyButton.addClass("hidden");
-            //$unbuyButton.css("display", "none");
             $minusButton.removeClass("hidden");
-            //$minusButton.css("display", "inline-block");
             $plusButton.removeClass("hidden");
             $plusButton.css("display", "inline-block");
             $status.remove();
@@ -108,9 +95,7 @@ $(function () {
         var $nameEdit = $node.find(".name-edit");
         $notBought.click(function () {
             $notBought.addClass("hidden");
-            //$notBought.css("display", "none");
             $nameEdit.removeClass("hidden");
-            //$nameEdit.css("display", "inline-block");
             $nameEdit.val(title);
             $nameEdit.focus();
             // newName = $nameEdit.val();
@@ -120,9 +105,7 @@ $(function () {
             var updatedName = $nameEdit.val();
             console.log("New name", updatedName);
             $nameEdit.addClass("hidden");
-            //$nameEdit.css("display", "none");
             $notBought.removeClass("hidden");
-            //$notBought.css("display", "inline-block");
             $notBought.text(updatedName);
             title = updatedName;
             $productTitle.text(updatedName);
@@ -137,7 +120,7 @@ $(function () {
             }
         });
 
-        // $node.find(".inhalt").focusout(newName);
+        //$node.find(".inhalt").focusout(newName);
 
         $notBought.text(title);
 
