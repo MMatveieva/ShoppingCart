@@ -31,6 +31,10 @@ $(function () {
         var $unbuyButton = $node.find(".unbuy-button");
         var $buyButton = $node.find(".buy-button");
         var $deleteButton = $node.find(".delete-button");
+        var $productTitle = $status.find(".title");
+        var $leftCount = $status.find(".left-count");
+        var $minusButton = $node.find(".minus-button");
+        var $plusButton = $node.find(".plus-button");
 
         // "DELETE-BUTTON"
         $deleteButton.click(function () {
@@ -39,7 +43,6 @@ $(function () {
         });
 
         // "MINUS-BUTTON"
-        var $minusButton = $node.find(".minus-button");
         $minusButton.click(function () {
             console.log("Quantity", quantity);
             if (quantity == 2)
@@ -47,18 +50,18 @@ $(function () {
             if (quantity > 1) {
                 quantity--;
                 $quantityLabel.text(quantity);
-                $status.find(".left-count").text(quantity);
+                $leftCount.text(quantity);
             }
 
         });
 
         // "PLUS-BUTTON"
-        $node.find(".plus-button").click(function () {
+        $plusButton.click(function () {
             quantity++;
             if (quantity > 1)
                 $minusButton.removeClass("disabled");
             $quantityLabel.text(quantity);
-            $status.find(".left-count").text(quantity);
+            $leftCount.text(quantity);
         });
 
         // "BUY-BUTTON"
@@ -76,10 +79,10 @@ $(function () {
             $unbuyButton.css({
                 display: "inline-block"
             });
-            $node.find(".minus-button").css({
+            $minusButton.css({
                 display: "none"
             });
-            $node.find(".plus-button").css({
+            $plusButton.css({
                 display: "none"
             });
             $alreadyBought.text(title);
@@ -103,10 +106,10 @@ $(function () {
             $unbuyButton.css({
                 display: "none"
             });
-            $node.find(".minus-button").css({
+            $minusButton.css({
                 display: "inline-block"
             });
-            $node.find(".plus-button").css({
+            $plusButton.css({
                 display: "inline-block"
             });
             $status.remove();
@@ -128,11 +131,13 @@ $(function () {
         function newName() {
             var updatedName = $nameEdit.val();
             console.log("New name", updatedName);
-            $nameEdit.css("display", "none");
-            $notBought.css("display", "inline-block");
+            $nameEdit.addClass("hidden");
+            //$nameEdit.css("display", "none");
+            $notBought.removeClass("hidden");
+            //$notBought.css("display", "inline-block");
             $notBought.text(updatedName);
             title = updatedName;
-            $status.find(".title").text(updatedName);
+            $productTitle.text(updatedName);
             $nameEdit.val(updatedName);
         }
 
@@ -152,8 +157,8 @@ $(function () {
         console.log("Name", $notBought.text(title));
         console.log("Quantity-label", quantity);
 
-        $status.find(".title").text(title);
-        $status.find(".left-count").text(quantity);
+        $productTitle.text(title);
+        $leftCount.text(quantity);
 
         $NOT_BOUGHT.append($status);
         $LIST.append($node); //Add to the end of the list
