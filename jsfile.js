@@ -5,6 +5,14 @@
 console.log("Hello");
 
 $(function () {
+
+    function updateNode(node, fn) {
+        node.fadeOut(250, function () {
+            fn();
+            node.fadeIn(250);
+        });
+    }
+
     // variables from column one
     var $LIST = $('.shop-list');
     var $ITEM_TEMPLATE = $('.row-template').html();
@@ -38,7 +46,8 @@ $(function () {
 
         // "DELETE-BUTTON"
         $deleteButton.click(function () {
-            $node.remove();
+            $node.slideUp();
+            // $node.remove();
             $status.remove();
         });
 
@@ -65,7 +74,7 @@ $(function () {
         });
 
         // "BUY-BUTTON"
-        $buyButton.click(function () {
+        function buyClick() {
             $notBought.addClass("hidden");
             $alreadyBought.removeClass("hidden");
             $buyButton.addClass("hidden");
@@ -75,10 +84,14 @@ $(function () {
             $plusButton.addClass("hidden");
             $alreadyBought.text(title);
             $BOUGHT.append($status);
+        }
+
+        $buyButton.click(function () {
+            updateNode($node, buyClick);
         });
 
         // "UNBUY-BUTTON"
-        $unbuyButton.click(function () {
+        function unbuyClick() {
             $alreadyBought.addClass("hidden");
             $notBought.removeClass("hidden");
             $buyButton.removeClass("hidden");
@@ -89,6 +102,10 @@ $(function () {
             $plusButton.css("display", "inline-block");
             $status.remove();
             $NOT_BOUGHT.append($status);
+        }
+
+        $unbuyButton.click(function () {
+            updateNode($node, unbuyClick);
         });
 
         // "NAME-EDIT"
@@ -102,6 +119,7 @@ $(function () {
         });
 
         function newName() {
+            console.warn("New nam");
             var updatedName = $nameEdit.val();
             console.log("New name", updatedName);
             $nameEdit.addClass("hidden");
@@ -120,13 +138,14 @@ $(function () {
             }
         });
 
-        //$node.find(".inhalt").focusout(newName);
+        console.log("Name edit", $nameEdit);
+        $nameEdit.focusout(newName);
 
         $notBought.text(title);
 
         $quantityLabel.text(quantity);
-        console.log("Name", $notBought.text(title));
-        console.log("Quantity-label", quantity);
+        //console.log("Name", $notBought.text(title));
+        //console.log("Quantity-label", quantity);
 
         $productTitle.text(title);
         $leftCount.text(quantity);
@@ -164,12 +183,5 @@ $(function () {
 
     $input.attr("placeholder", "Назва товару");
 
-
-    function updateNode(node, fn) {
-        node.fadeOut(250, function () {
-            fn();
-            node.fadeIn(250);
-        });
-    }
 
 });
